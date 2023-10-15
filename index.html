@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Breez ClickOnce is a browser extension which enables ClickOnce support in Mozilla Firefox and Google Chrome">
+    <meta name="author" content="">
+
+    <title>Breez ClickOnce</title>
+	
+	<!-- Favicon -->
+	<link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/narrow-jumbotron.css" rel="stylesheet">
+    <link href="css/vs.css" rel="stylesheet">
+    
+    <!-- Javascript -->
+    <script src="js/highlight.pack.js" type="text/javascript"></script>
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+
+            if(window.breezClickOnceInstalled === undefined){
+              document.getElementById("extensionNotInstalledSpan").style.display = "inline";
+            }
+            else{
+              document.getElementById("extensionInstalledSpan").style.display = "inline";
+            }
+        });
+    </script>
+  </head>
+  <body>
+
+    <div class="container">
+      <header class="header clearfix">
+		<div style="display:inline-block;">
+			<img src="images/breezclickonce-64.png" />
+		</div>
+		<div style="display:inline-block;">
+			<h3>Breez ClickOnce</h3>
+		</div>
+      </header>
+
+      <main role="main">
+		<h4>About</h4>
+		<p>Breez ClickOnce is a browser extension which enables ClickOnce support in Mozilla Firefox and Google Chrome.</p>
+		<p>The Mozilla Firefox browser extension can be found in the Mozilla Firefox add-ons gallery <a href="https://addons.mozilla.org/en-US/firefox/addon/breez-clickonce/">here</a>.</p>
+		<p>The Google Chrome browser extension can be found in the Chrome Web Store <a href="https://chrome.google.com/webstore/detail/breez-clickonce-4c/cmkpnegkacdeagdmnbbhjbgdpndmlkgj">here</a>.</p>
+		
+		
+        <h4>Developer information</h4>
+		<p>Ensuring whether the extension is installed can be done by checking the breezClickOnceInstalled property on the window object with JavaScript. See the example below:</p>
+        <pre><code>&lt;script type="text/javascript"&gt;
+    $(document).ready(function() {
+        if(window.breezClickOnceInstalled === undefined){
+            alert("Breez ClickOnce extension is not installed.");
+        }
+        else{
+            alert("Breez ClickOnce extension is installed.");
+        }
+    });
+&lt;/script&gt;</code></pre>
+Current extension installation status: 
+<span id="extensionInstalledSpan" style="display:none;">✅installed</span>
+<span id="extensionNotInstalledSpan" style="display:none;">❌not installed</span>
+<br /><br />
+        <h4>Information for system administrators</h4>
+		<p>The helper executable contains some command-line switches that could be useful for system administrators:</p>
+			<ul>
+				<li><b>/Silent</b>: Install the helper executable without any user interaction</li>
+				<li><b>/Uninstall</b>: Uninstall the helper executable</li>
+			</ul>
+			<p>These command-line switches can be combined if desired.</p>
+			<p>The helper executable does not require administrator rights and installs itself to <b>C:\Users\&lt;username&gt;\AppData\Local\Breez\ClickOnceHelper</b>.</p>
+			<p>It also registers itself as a native messaging bridge under the following registry keys:</p>
+			<ul>
+				<li><b>HKCU\Software\Mozilla\NativeMessagingHosts</b></li>
+				<li><b>HKCU\Software\Google\Chrome\NativeMessagingHosts</b></li>
+			</ul>
+			<p>The helper executable can be manually downloaded <a href="breezclickoncehelper.exe">here</a>.</p>
+		<h4>Sources</h4>
+		<p>Full source is available on GitHub</p>
+		<p>
+			<ul>
+				<li><a href="https://github.com/brz/Breez-ClickOnce" target="_blank">Breez ClickOnce</a> (Browser extension for Mozilla Firefox)</li>
+				<li><a href="https://github.com/brz/Breez-ClickOnce-4C" target="_blank">Breez ClickOnce 4C</a> (Browser extension for Google Chrome)</li>
+				<li><a href="https://github.com/brz/Breez-ClickOnce-Helper" target="_blank">Breez ClickOnce Helper</a> (Helper executable)</li>
+			</ul>
+			
+		</p>
+      </main>
+
+      <footer class="footer">
+        <p>&copy; Breez 2023</p>
+      </footer>
+
+    </div> <!-- /container -->
+  </body>
+</html>
